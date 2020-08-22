@@ -1,0 +1,250 @@
+body {
+  margin:0;
+}
+// setup main container //
+.container {
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+  @media only screen and (min-width: 1200px) {
+		padding-left:15px;
+		padding-right: 15px;
+  }
+}
+// create pen styles in here, then remove when they area live //
+// vars //
+$white: #FFFFFF;
+$lavBg: #EEE5E9;
+$madderRed: #CC2936;
+// mixins - transition //
+@mixin transition_crosscomp($timing:0.35s) {
+  transition:  $timing all;
+  webkit-transition: $timing all;
+  -moz-transition: $timing all;
+  -ms-transition: $timing all;
+  -o-transition: $timing all;
+}
+// wrapper and all styles, copy the classes you need //
+#hoverBtnStyles {
+  background-color: $lavBg;
+  min-height:100vh;
+  padding: 50px;
+	.styleRow {
+		margin-bottom: 20px;
+	  // Show case setup //
+	  h2 {
+	    text-align: center;
+			font-size:22px;
+			text-decoration: underline;
+	    margin-bottom: 25px;
+	  }
+	  // button rows //
+	  .btn_styleRow {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    align-self: center;
+	    flex-wrap: wrap;
+	    margin-bottom: 25px;
+	  }
+	  // general button style, transitions etc - you'll need this for any of the effects //
+	  .btn-main-style {
+	    padding:10px 20px;
+	    width:220px;
+	    border:1px solid black;
+	    border-radius: 5px;
+	    margin:5px 10px;
+	    position: relative;
+	    cursor: pointer;
+	    text-align: center;
+	    @include transition_crosscomp();
+			span {
+				position: relative;
+				z-index: 2;
+			}
+	    &:after {
+	      @include transition_crosscomp();
+	    }
+	    &:before {
+	      @include transition_crosscomp();
+	    }
+	  }
+	  // Directional Movement //
+    // Move direction up //
+    .jbdir-move-up {
+      bottom:0;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+				height:40px;
+			  width:100%;
+        bottom:-40px;
+			  left:0;
+      }
+      &:hover {
+        bottom:10px;
+        &:after {
+          opacity: 1; visibility: visible;
+        }
+      }
+    }
+    // Move direction left //
+    .jbdir-move-left {
+      right:0;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+				height:100%;
+		    width:40px;
+				top:0;
+        right:-40px;
+      }
+      &:hover {
+        right:10px;
+        &:after {
+          opacity: 1; visibility: visible;
+        }
+      }
+    }
+    // Move direction right //
+    .jbdir-move-right {
+      left:0;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+				height:100%;
+				width:40px;
+				top:0;
+        left:-40px;
+      }
+      &:hover {
+        left:10px;
+        &:after {
+          opacity: 1; visibility: visible;
+        }
+      }
+    }
+    // Move direction down //
+    .jbdir-move-down {
+      top:0;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+				height:40px;
+			  width:100%;
+        top:-40px;
+				left:0;
+      }
+      &:hover {
+        top:10px;
+        &:after {
+          opacity: 1; visibility: visible;
+        }
+      }
+    }
+		// Background hovers //
+		// Move bg up //
+		.jbbg-move-up {
+			overflow: hidden;
+			&:after {
+				content:'';
+			  opacity: 0; visibility: hidden;
+			  position: absolute;
+		    background-color: $madderRed;
+		  	z-index: 0;
+			  height:100%;
+			  width:100%;
+			  top:100%;
+			  left:0;
+			}
+			&:hover {
+				color:$white;
+			  &:after {
+				  top:0;
+				  opacity: 1; visibility: visible;
+				  // remove depending on styles //
+		      border-radius: 5px;
+			  }
+		  }
+		}
+    // Move bg left //
+    .jbbg-move-left {
+      overflow: hidden;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+        background-color: $madderRed;
+        z-index: 0;
+        height:100%;
+        width:100%;
+        top:0;
+        left:-100%;
+      }
+      &:hover {
+        color:$white;
+        &:after {
+          left:0;
+          opacity: 1; visibility: visible;
+          // remove depending on styles //
+          border-radius: 5px;
+        }
+      }
+    }
+    // Move bg down //
+    .jbbg-move-down {
+      overflow: hidden;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+        background-color: $madderRed;
+        z-index: 0;
+        height:100%;
+        width:100%;
+        bottom:-100%;
+        left:0;
+      }
+      &:hover {
+        color:$white;
+        &:after {
+          bottom:0;
+          opacity: 1; visibility: visible;
+          // remove depending on styles //
+          border-radius: 5px;
+        }
+      }
+    }
+    // Move bg right //
+    .jbbg-move-right {
+      overflow: hidden;
+      &:after {
+        content:'';
+        opacity: 0; visibility: hidden;
+        position: absolute;
+        background-color: $madderRed;
+        z-index: 0;
+        height:100%;
+        width:100%;
+        top:0;
+        right:-100%;
+      }
+      &:hover {
+        color:$white;
+        &:after {
+          right:0;
+          opacity: 1; visibility: visible;
+          // remove depending on styles //
+          border-radius: 5px;
+        }
+      }
+    }
+		&:last-child {
+			margin-bottom:0;
+		}
+	}
+}
