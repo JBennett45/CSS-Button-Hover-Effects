@@ -1,5 +1,8 @@
+@import "variables";
+
 body {
   margin:0;
+  background-color: black;
 }
 // setup main container //
 .container {
@@ -12,10 +15,6 @@ body {
   }
 }
 // create pen styles in here, then remove when they area live //
-// vars //
-$white: #FFFFFF;
-$lavBg: #EEE5E9;
-$madderRed: #CC2936;
 // mixins - transition //
 @mixin transition_crosscomp($timing:0.35s) {
   transition:  $timing all;

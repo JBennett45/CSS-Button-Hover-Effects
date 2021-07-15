@@ -1,8 +1,7 @@
 var elixir = require('laravel-elixir');
-
-var domain = 'http://testing.local/';
-
+var domain = 'http://testingarea.local/button-hovers/';
 var folderDir = 'dist/';
+
 
 elixir.config.assetsPath = folderDir
 elixir.config.publicPath = folderDir
